@@ -1,0 +1,255 @@
+\documentclass{article}
+\usepackage{fontspec}
+\usepackage{xcolor}
+%\usepackage{sagetex}
+
+\usepackage{euler}
+\usepackage{amsmath}
+\usepackage{unicode-math}
+
+
+\usepackage[makeroom]{cancel}
+\usepackage{ulem}
+
+\setlength\parindent{0em}
+\setlength\parskip{0.618em}
+\usepackage[a4paper,lmargin=1in,rmargin=1in,tmargin=1in,bmargin=1in]{geometry}
+
+\setmainfont[Mapping=tex-text]{Helvetica Neue LT Std 45 Light}
+
+\newcommand\N{\mathbb{N}}
+\newcommand\Z{\mathbb{Z}}
+\newcommand\R{\mathbb{R}}
+\newcommand\C{\mathbb{C}}
+\newcommand\A{\mathbb{A}}
+
+\usepackage{soul}
+\begin{document}
+
+\begin{center}
+  151B --- Homework 1
+
+  Ricardo J. Acuna
+
+  (862079740)
+\end{center}\vspace{1.618em}
+
+\paragraph{1} Find an alternative proof to the Bolzano–Weierstrass Theorem as follows: Let $B$ be the
+set of points such that $f(t) > c$. Show that the greatest lower bound of $B$ exists. Let $x$ be
+the glb of $B$. Prove that $f(x) = c$.
+
+\uwave{pf.}
+
+Given $[a,b]\subset \R$, and a continuous map $f$
+defined on $[a,b]$. Want to show,
+\[f(a)<f(b) \implies \forall c\in (f(a),f(b)):
+\exists x\in(a,b): f(x) = c.\]
+
+$\forall c \in(f(a),f(b)),$ define $ B_c:=\{t \in [a,b]| f(t) > c\}.$
+
+$f(b) \in B_c \implies B_c \neq \emptyset .$
+
+$f^{-1}(B_c)\subset [a,b] \implies B_c = f(f^{-1}(B_c)) \subset
+f([a,b]) .$
+
+$f$ is continuous $\implies f([a,b])$ is an interval.
+
+Now, $B_c$ is a bounded, not empty set in $\R$. By the completeness of
+$\R$, the $\inf B_c$ exists.
+
+Let $x = \inf B_c$. Want to show by contradiction that $f(x) = c$,
+
+Ass. $f(x) > c ,$
+
+Put $\epsilon = f(x) - c \geq 0$. By the continuity of $f$,
+
+\[\exists \delta > 0: |t - x | < \delta \implies |f(t) - f(x)| <
+  \epsilon.\]
+
+$\implies |f(t) - f(x)| < f(x) - c.$
+
+$\implies -(f(x) - c) < f(t) - f(x) < f(x) - c.$
+
+$\implies c -f(x) < f(t) - f(x).$
+
+$\implies c < f(t).$
+
+$\implies c < f(t_0).$ whenever $ x-\delta < t_0 <x$
+
+$\implies x$ is a not a lower bound of $B_c.$
+
+Ass. $f(x) < c,$
+
+Put $\epsilon = c - f(x) > 0$. By the continuity of $f$,
+
+\[\exists \delta > 0: |t - x | < \delta \implies |f(t) - f(x)| <
+  \epsilon.\]
+
+$\implies  |f(t) - f(x)| < c - f(x).$
+
+$\implies  f(t) - f(x) < c - f(x).$
+
+$\implies  f(t) < c.$
+
+$\implies t \not \in B_c$ and $t\in (x-\delta , x +\delta).$
+
+For some $t_1$, $x+\delta > t_1 > x$. $t_1$ is a bigger bound than
+$x$.
+
+$\implies x$ is not the greatest lower bound of $B_c.$
+
+So, by contradiction $f(x) = c\quad ∎$
+
+\paragraph{2} Let $E = {x_n }$ be a countable subset of $[a, b]$ and
+${c_n}$ be a sequence of positive numbers such that
+$c_n$ converge and is finite. Define
+
+\[f (x) =\sum_{x_n < x} c_n.\]
+
+Prove the following:
+
+(1) f is monotonically increasing on $[a, b]$.
+
+(2) f is discontinuous at every points of E with
+$f (x_n +) − f (x_n −) = c_n $.
+
+(3) f is continuous at every other point of $(a, b)$.
+
+\uwave{pf. of (a)}
+
+We want to show $x<y \implies f(x) < f(y).$
+
+Let $x,y \in [a,b]$, without loss of generality ass. $x<y$.
+
+By definition, $f(x) =\sum_{x_n < x} c_n,$ and $f(y) =\sum_{x_n < y}
+c_n.$
+
+$f(x) = \sum_{x_n < x} c_n \leq \sum_{x_n < x} c_n + \sum_{y < x} c_n
+= \sum_{x_n < y} c_n = f(y)$.
+
+We can do this because $\forall n: c_n > 0 \quad ∎$
+
+\uwave{pf. of (b) and (c)}
+
+Since $f$ is increasing by 4.29
+
+$f(x+)= \sup_{a<t<x} f(t) < f(x) < \inf_{x<t<b} f(t) = f(x-)$
+
+Since every bounded sequence has a convergent subsequence,
+
+$\{x_n\} \subset [a,b] \implies \exists \{x_{n_k}\}$ such that
+$\lim_{k\rightarrow \infty} x_{n_k} = x$, furthermore we can choose
+the subsequence such that $\forall x_i \in \{x_n\} \backslash
+\{x_{n_k}\}.$ Such that, $ x_i \geq x.$ Then we get a subsequence that
+has a matching $c_{n_k},$ for each $x_{n_k},$ and it covers all of the
+values between $a,$ and $x$, not including $x$.
+
+So since all the values of the sequence are all smaller than $x$, and
+we chose the sup, it must be that,
+
+$f(x-) = \sum_{x_n < x} c_n = f(x).$
+
+Similarly, we can choose a subsequence that converges to $x$ that covers
+all the values between $x$, and $b$, not including $x$.
+
+So, since the values of the sequence are all bigger than $x$, and we
+chose the inf, it must be that,
+
+$f(x+) = \sum_{x_n \leq x} c_n$.
+
+Now, $\forall x_i \in E: f(x_i+) - f(x_i-) = \sum_{x_n \leq x_i} c_n -
+\sum_{x_n < x_i} c_n = c_i$.
+
+Which shows $f$ is discontinuous for all $x_i\in E$.
+
+Now if $x\not\in E \implies x_n < x <x_{n+1}$ for some $n\in\N.$
+
+$\implies x_n < x \implies x_n \neq x.$
+
+Now,$x_n\leq x$ and $x_n\neq x \implies x_n < x$, which reduces
+$f(x+)$ to $f(x)$.
+
+$\implies f(x+)-f(x-) = f(x) - f(x) = 0 \implies f(x+) = f(x-)$
+
+So, $f$ is continuous for all $x\not\in E. \quad ∎$
+\newpage
+\paragraph{3} Suppose $f$ and $g$ are defined and that $f(t)→ A$ and
+$g(t)→ B$ as $t → +∞$ where $A$ and $B$
+are real numbers. Prove that $(f + g)(t) → A + B$ and $(f g)(t) → AB$
+as $t → +∞$.
+
+\uwave{pf.} $f(t)→ A$ as $t → +∞$, and $g(t)→ B$ as $t → +∞$
+
+$\implies \forall \epsilon>0: \exists M,N\in\N: m>M,$ and $n> N$ and
+sequences $\{t_n\}$ and $\{t_k\}$ such that,
+
+
+$|g(t_m) - B |<\frac{\epsilon}{2}$ and $|f(t_n)-A| <
+\frac{\epsilon}{2}$
+
+Put $K = \max\{N,M\}, k>K \implies |f(t_k) +g(t_k) -(A + B)| <
+|f(t_k)-A| +|g(t_k)-B| < \epsilon$.
+
+So, $(f+g)(t) \rightarrow A+B$ as
+$t\rightarrow +\infty$
+
+$\epsilon$ was arbitrary so put,
+
+$|g(t_k) - B |<\frac{\epsilon}{2|B|}$ and $|f(t_k)-A| <
+\frac{\epsilon}{2|A|}$
+
+We can see,
+
+$|f(t_k)g(t_k) - AB|= |f(t_k)g(t_k) -f(t_k) B +f(t_k) B - AB| <
+|f(t_k)g(t_k) -f(t_k)B |+|f(t_k) B - AB| = |f(t_k)(g(t_k)-B)|
++|B(f(t_k)-A)|=  |f(t_k)||g(t_k)-B|
++|B||f(t_k)-A|\leq |f(t_k)|\frac{\epsilon}{2|A|} +|B|\frac{\epsilon}{2|B|}$
+
+Taking the limit $k \rightarrow +\infty$  gives,
+
+$|f(t_k)g(t_k) - AB| < |A|\frac{\epsilon}{2|A|}
++|B|\frac{\epsilon}{2|B|} = \epsilon$
+
+So $(fg)(t) \rightarrow AB$ as $t\rightarrow +\infty.$$\quad ∎$
+
+\paragraph{4} We say that $f$ is one-to-one on $E$ if $x_1  \neq x_2$
+implies $f (x_1 )\neq f(x_2 )$ for all $x_1 , x_2 \in E$. If $f$
+is one-to-one and continuous on $[a, b]$ and $f (a) < f (b)$, prove that f is strictly increasing.
+That is, $x_1 < x_2$ implies $f (x_1) < f (x_2 )$.
+
+\uwave{pf.}
+
+$\forall x_1,x_2\in E$.
+
+Suppose $x_1 < x_2$ and $f(x_1) = f(x_2)$,
+
+$f$ is one to one $\implies x_1 = x_2$, which is false, so $f(x_1)\neq
+f(x_2).$
+
+Suppose $x_1 < x_2$ and $f(x_1) > f(x_2)$,
+
+Let $\epsilon = f(x_1)-f(x_2) > 0$
+
+$f$ is continuous $\implies \exists \delta >0: |x_2-x_1| < \delta
+\implies |f(x_2)-f(x_1)|< \epsilon$.
+
+$\implies |f(x_2) - f(x_1)|< f(x_1) - f(x_2)$
+
+$\implies -(f(x_1) - f(x_2)) < f(x_2) - f(x_1) $
+
+$\implies -f(x_1) + f(x_2) < f(x_2) - f(x_1) $
+
+$\implies 0 < 0$  which is false.
+
+So, we arrive to a contradiction.
+
+Therefore, $x_1 < x_2 \implies f(x_1) < f(x_2)$$\quad ∎$
+
+
+
+\end{document}
+
+%%% Local Variables:
+%%% mode: latex
+%%% TeX-master: t
+%%% End:

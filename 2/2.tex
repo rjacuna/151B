@@ -1,0 +1,213 @@
+\documentclass{article}
+\usepackage{fontspec}
+\usepackage{xcolor}
+%\usepackage{sagetex}
+
+\usepackage{euler}
+\usepackage{amsmath}
+\usepackage{amssymb}
+\usepackage{unicode-math}
+
+
+\usepackage[makeroom]{cancel}
+\usepackage{ulem}
+
+\setlength\parindent{0em}
+\setlength\parskip{0.618em}
+\usepackage[a4paper,lmargin=1in,rmargin=1in,tmargin=1in,bmargin=1in]{geometry}
+
+\setmainfont[Mapping=tex-text]{Helvetica Neue LT Std 45 Light}
+
+\newcommand\N{\mathbb{N}}
+\newcommand\Z{\mathbb{Z}}
+\newcommand\R{\mathbb{R}}
+\newcommand\C{\mathbb{C}}
+\newcommand\A{\mathbb{A}}
+
+\usepackage{soul}
+\begin{document}
+
+\begin{center}
+  151B --- Homework 2
+
+  Ricardo J. Acuna
+
+  (862079740)
+\end{center}\vspace{1.618em}
+
+\paragraph{1} Let $f$ be defined for all real $x$, and suppose that
+
+\[|f(x)-f(y)|<(x-y)^2\]
+
+for all real $x$ and $y$. Prove that $f$ is constant.
+
+\uwave{pf.}
+
+$|f(x)-f(y)| < (x-y)^2 \iff -(x-y)^2 < f(x)-f(y)< (x-y)^2$.
+
+Case 1: $x-y > 0$.
+$-(x-y) < \frac{f(x)-f(y)}{x-y} < x-y$
+
+Case 2: $x-y < 0$.
+$-(x-y) > \frac{f(x)-f(y)}{x-y} > x-y$
+
+In both cases, taking the limit as $x\rightarrow y\implies  x-y
+\rightarrow 0$.
+
+We squeeze the difference quotient in between $0$ and $0$.
+
+So $f^\prime(x) = 0 \implies f$ is constant
+$\blacksquare$
+
+\newpage
+
+\paragraph{2} If
+
+\[C_0 +\frac{C_1}{2}+\cdots + \frac{C_{n-1}}{n} +\frac{C_n}{n+1} = 0\]
+
+for real constants $C_0,\cdots,C_n$, prove that the equation
+\[C_0 +C_1 x+\cdots+C_n x^n = 0\]
+
+has at least one real root between $0$ and $1$.
+
+\uwave{pf.}
+
+\[C_0 +\frac{C_1}{2}+\cdots + \frac{C_{n-1}}{n} +\frac{C_n}{n+1} = 0 \implies C_0 = -(\frac{C_1}{2}+\cdots + \frac{C_{n-1}}{n}
+  +\frac{C_n}{n+1})\]
+
+Let $P(x) = C_0 +C_1 x+\cdots+C_n x^n$
+
+If $C_0 <0$, then $P(0) = C_0 < 0$
+and
+$P(1) = C_0 + C_1+ \cdots + C_n = -(\frac{C_1}{2}+\cdots + \frac{C_{n-1}}{n}
++\frac{C_n}{n+1})+ C_1+ \cdots + C_n$
+
+
+$C_0<0 \implies -C_0 > 0 \implies (\frac{C_1}{2}+\cdots + \frac{C_{n-1}}{n}
++\frac{C_n}{n+1}) > 0$
+
+
+$\frac{C_i}{i+1} < C_i \forall i \in \N$ and $C_i \in \R$. And
+$\forall a,b,c \in \R a<b \implies a + c < b +c$.
+
+Repeated applications of the previous line yield,
+$P(1) > 0$
+
+$P$ is a polynomial, therefore it is continuous.
+
+Since $P$ satisfies the hypotheses of the intermediate value theorem,
+
+\[\exists x\in(0,1): P(x)=0\]
+
+Rinse and repeat, $C_0 > 0 \implies P(0) > 0$ and $P(1)<0 \implies
+\exists x\in(0,1): P(x)=0$.
+
+If $C_0 = 0,$ then $P(x) = C_1x + \cdots+ C_n x^n$
+
+We want to find, if $P$ has a root between $0$ and $1$. That is we
+want to solve,
+
+\[0 = C_1x + \cdots+ C_n x^n\]
+
+$x \in(0,1) \implies  x \neq 0,$ so we can divide by $x$,
+
+\[0 = C_1 + \cdots+ C_n x^{n-1}\]
+
+Now, we look at the zeroes of $Q(x) = C_1 + \cdots+ C_n x^{n-1}$
+
+Then, by the same argument as before $C_1<0$ and $C_1 >0$, imply there
+is a root of $Q(x)$, between $0$ and $1$, which in turn implies there is
+a root of $xQ(x) = P(x)$.
+
+Now, since there are finitely many $C_i$, there are finitely many
+applications of this procedure which yield a real zero in
+between $0$ and $1$.
+
+Note that, if $C_0,\cdots, C_{n-1}$ are all zero. Then,
+
+\[C_0 +\frac{C_1}{2}+\cdots + \frac{C_{n-1}}{n} +\frac{C_n}{n+1} = 0
+  \implies C_n = 0\]
+
+So, $P(x) = Z(x)$ the zero polynomial, which clearly has a zero
+between $0$ and $1$.
+
+
+
+So,
+
+\[C_0 +C_1 x+\cdots+C_n x^n = 0\]
+
+has a real root between $0$ and $1$
+$\blacksquare$
+
+\paragraph{3} Suppose $f$ is continuous for $x ≥ 0$, $f^\prime(x)$ exists for $x > 0$, $f(0) = 0$, and $f^\prime$
+is monotonically
+increasing. Define, for $x > 0$
+\[g(x) = \frac{f(x)}{x}\].
+
+Prove that g is monotonically increasing.
+
+\uwave{pf.}
+
+Compute $g^\prime(x) = \frac{xf^\prime(x) -f(x)}{x^2}$ by the
+quotient rule. Which exists because $f^\prime$ exists for $x>0$.
+
+So, $g$ is differentiable on $(-\infty,0)$.
+
+Want to show $g^\prime(x) =  \frac{xf^\prime(x) -f(x)}{x^2} \geq 0 \iff
+xf^\prime(x) - f(x) \geq 0$ since $x^2>0 \forall x \neq 0.$
+
+
+$f^\prime$ is increasing, so $x < y \implies f^\prime (x) \leqf^\prime(y)$
+
+$f$ is defined on $[0,\infty]\implies f$ is defined on $[0,x].$
+
+$f$ is differentiable on $(0,\infty) \implies f$ is differentiable on
+$(0,x)$.
+
+By the mean value theorem, $\exists t\in(0,x): f(x) -f(0) =
+(x-0)f^\prime(t)$
+
+$f(0) = 0 \implies f(x) = xf^\prime(t)$
+
+$t\in(0,x) \implies t<x \implies f^\prime(t)<f^\prime(x)$
+
+$\implies f(x) =xf^\prime(t) < xf^\prime(x)$ $\blacksquare$
+
+
+
+
+
+
+\paragraph{4} If $f$ is differentiable in $(a,b)$ and $f^\prime(x) >
+0$. Prove that $f$ is strictly increasing in $(a,b)$. Let g be its inverse function. Prove that g is differentiable and that,
+
+\[ g^\prime(f(x)) = \frac{1}{f^\prime(x)} \]
+
+\uwave{pf.}
+
+$f^\prime(x) > 0 \implies $ f is strictly increasing on $(a,b)$.
+
+Fix $s \in \text{dom}(g)$. & Let $\phi(t) = \frac{g(t) - g(s)}{t-s}.$
+
+Since, dom$(g) = f((a,b)),$ $\exists x,y \in (a,b): f(x)= t$ and
+$f(y)=s$.
+
+Now, $\phi(f(x)) = \frac{g(f(x)) - g(f(y))}{f(x)-f(y)} = \frac{x -
+  y}{f(x)-f(y)} = \frac{1}{\frac{f(x)-f(y)}{x-y}}$.
+
+Since $f$ is differentiable it is continuous, and since $f$ has an
+inverse it is $1\rightarrow 1$. So it follows $g$ is continuous.
+
+$ \lim_{s\rightarrow t} \phi(t) = g^\prime(f(x)) =\lim_{f(x)\rightarrow f(y)}
+\phi(f(x)) \stackrel{g\text{ is continuous}}{=} \lim_{x\rightarrow y}
+\phi(f(x)) = \frac{1}{\lim{x\rightarrow y} \frac{f(x)-f(y)}{x-y}}
+\stackrel{\text{ definition of} f^\prime}{=} \frac{1}{f^\prime(x)}$
+$\blacksquare$
+
+\end{document}
+
+%%% Local Variables:
+%%% mode: latex
+%%% TeX-master: t
+%%% End:

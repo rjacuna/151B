@@ -1,0 +1,188 @@
+\documentclass{article}
+\usepackage{fontspec}
+\usepackage{xcolor}
+%\usepackage{sagetex}
+
+\usepackage{euler}
+\usepackage{amsmath}
+\usepackage{amssymb}
+\usepackage{unicode-math}
+
+
+\usepackage[makeroom]{cancel}
+\usepackage{ulem}
+
+\setlength\parindent{0em}
+\setlength\parskip{0.618em}
+\usepackage[a4paper,lmargin=1in,rmargin=1in,tmargin=1in,bmargin=1in]{geometry}
+
+\setmainfont[Mapping=tex-text]{Helvetica Neue LT Std 45 Light}
+
+\newcommand\N{\mathbb{N}}
+\newcommand\Z{\mathbb{Z}}
+\newcommand\Q{\mathbb{Q}}
+\newcommand\R{\mathbb{R}}
+\newcommand\C{\mathbb{C}}
+\newcommand\A{\mathbb{A}}
+
+\usepackage{soul}
+\begin{document}
+
+\begin{center}
+  151B --- 6
+
+  Ricardo J. Acuna
+
+  (862079740)
+\end{center}\vspace{1.618em}
+
+\paragraph{1} Consider the $f(x)$ on $[0, 1]$ such that $f(x) = 0$ if
+$x = \frac{1}{2^n}$ for some positive integer $n$ and $f(x) = 1$ otherwise. Prove that $f(x)$ is integrable and compute its
+integral.
+
+\uwave{pf.}
+
+\begin{align*}
+\left\{\frac{1}{2^n}\right\}_{n=1}^\infty &\subset \bigcup_{n = 1}^\infty \left(\frac{1}{2^n}
+                                            -\frac{1}{2^{n+2}},
+                                            \frac{1}{2^n}+\frac{1}{2^{n+2}}\right)\\
+                                           &=  \bigcup_{n = 1}^\infty
+                                             \left(\frac{2^{n+2} -
+                                             2^n}{2^{2n+2}},
+                                             \frac{2^{n+2} +
+                                             2^n}{2^{2n+2}}\right)\\
+                                          &=  \bigcup_{n = 1}^\infty
+                                             \left(\frac{2^{n}(4-1)
+                                             }{2^{2n+2}},
+                                             \frac{2^{n}(4+
+                                            1)}{2^{2n+2}}\right)\\
+                                          &=  \bigcup_{n = 1}^\infty
+                                            \left(\frac{3
+                                             }{2^{n+2}},
+                                            \frac{5}{2^{n+2}}\right)\\
+                                          &=  \bigcup_{n = 1}^{N-1}
+                                            \left(\frac{3
+                                             }{2^{n+2}},
+                                            \frac{5}{2^{n+2}}\right)
+                                            \bigcup \bigcup_{n = N}^\infty
+                                            \left(\frac{3
+                                             }{2^{n+2}},
+                                            \frac{5}{2^{n+2}}\right)\\
+                                          &\subset  \bigcup_{n = 1}^{N-1}
+                                            \left(\frac{3
+                                             }{2^{n+2}},
+                                            \frac{5}{2^{n+2}}\right)
+                                            \bigcup
+                                            \left[  0,
+                                            \frac{5}{2^{N+2}}\right)
+\end{align*}
+
+$f$ is bounded, so put $M = \sup f = 1$ on $[0,1]$.
+
+Then Let $P = \{0,\frac{5}{2^{N+2}},\frac{1}{2^n}- \frac{5}{2^{N+2}},
+\frac{1}{2^n}+ \frac{5}{2^{N+2}}, 1\}_{n=1}^{N-1}$.
+
+$\frac{1}{2^n} \in \left(\frac{1}{2^n}- \frac{5}{2^{N+2}},
+\frac{1}{2^n}+ \frac{5}{2^{N+2}}\right) \implies \varDelta x_n =
+\frac{1}{2^n}+ \frac{5}{2^{N+2}} -\left(\frac{1}{2^n}-
+  \frac{5}{2^{N+2}}\right) = \frac{5}{2^{N+1}}$
+
+
+Choose $N$ so large such that, $\varDelta x_n = \frac{5}{2^{N+1}} <
+\frac{\varepsilon}{MN}$.
+\begin{align*}
+\frac{1}{4} < \frac{1}{2} \implies \frac{5}{2^{N+2}} <
+  \frac{5}{2^{N+1}} \implies \varDelta x_0 = \frac{5}{2^{N+2}} < \varepsilon
+\end{align*}
+
+$M_n = \sup f$ for $\frac{1}{2^n}+ \frac{5}{2^{N+2}}\leq x \leq
+\frac{1}{2^n}+ \frac{5}{2^{N+2}}$,
+and
+$M_0 = \sup f$ for $0\leq x \leq \frac{1}{2^{N+2}}$.
+
+$\sum_{n= 0}^{N-1} M_n \varDelta x_n < MN\frac{\varepsilon}{MN} = \varepsilon$
+
+So, now we've isolated all of the discontinuities of $f$.
+
+Refine $P$ to $P^*$ such that $\varDelta x_{n_i} = \frac{5}{2^{N+1}}$, for all
+$\frac{1}{2^n} + \frac{5}{2^{N+2}}\leq x \leq \frac{1}{2^{n+1}} -
+\frac{5}{2^{N+2}}$.
+
+On each of the intervals corresponding to $\varDelta
+x_{n_i}$, and $M_{n_i} = m_{n_i} = 1$.
+
+Then $U(P,f)-L(P,f) <\varepsilon$ since the only difference is the
+intervals corresponding to the $n$-index.
+
+Now, since we have that $f\in \mathcal{R}.$
+
+Then, we can pass to sample points. Since the integral over the
+discontinuities can be made arbitrarily small it's obvious that,
+
+$\int_0^1 f dx = \int_0^1 dx = 1$
+
+$\blacksquare$
+
+\newpage
+\paragraph{2} Is $f$ as in the problem integrable?
+\uwave{pf.}
+$f$ is continuous at $s_n$, so $f$ satisfies the requirements of
+(6.15) at each $s_n$
+
+(6.15) $\implies \int f dI(x-s_n) = f(s_n)$
+
+(6.12)$\implies \int f d\sum_{n=1}^N c_nI(x-s_n) = \sum_{n=1}^Nc_nf(s_n)$
+
+$\alpha_1(x) = \sum_{n=1}^N c_nI(x-s_n)$ and $\alpha_2(x) =
+\sum_{n=N+1}^\infty c_nI(x-s_n)$
+
+Since, $\sum_{n=1}^\infty c_n$ converges $\implies \sum_{n=1}^\infty
+c_nI(x-s_n)$ converges.
+
+$\implies \sum_{n=N}^\infty
+c_nI(x-s_n) <\varepsilon$ for sufficiently large $N$.
+
+Let $P$ be any partition of $[a,b]$.
+
+$f$ is bounded on $(a,b) \implies |f|\leq M$ $\implies \sum_{n=N}^\infty
+f(s_n)\varDelta \alpha_{2}_i <M\varepsilon$
+
+Let $\alpha(x) = \alpha_1(x)+\alpha_2(x) \implies |\int fd\alpha -\sum_{n=1}^N
+f(s_n)|< M\varepsilon$
+
+Take the limit as $N\rightarrow \infty$ and the result follows.
+
+$\blacksquare$
+
+\paragraph{3} As in the problem.
+
+\uwave{pf.}
+
+Since $\phi$ is a continuous one to one map from $[a,b]$ onto $[c,d]$, and $\phi(c)
+a$. $\phi$ is surjective. By that $\phi([c,d]) = [a,b]$. Since $\phi$
+is continuous and surjective it is a homeomorphism so it admits a
+continuous inverse.$\gamma_2 = \gamma_1\circ \phi$
+
+$(\implies)$ Ass. $\gamma_2$ is rectifiable $\Lambda(\gamma_2) <\infty$
+
+So,
+
+\paragraph{4}
+
+By hint:
+\begin{align*}
+g(t_i)\varDelta x_i = G(x_i) - G(x_{i-1}) &\implies
+(\alpha(x_i) - \alpha(x_{i-1}))g(t_i)\varDelta x_i = (\alpha(x_i) -
+                                            \alpha(x_{i-1}))(G(x_i) -
+                                            G(x_{i-1}))\\
+                                            &\implies \alpha(x_i)g(t_i)\varDelta x_i - \alpha(x_{i-1})g(t_i)\varDelta x_i = G(x_i)(\alpha(x_i) -
+                                            \alpha(x_{i-1})) - G(x_{i-1})(\alpha(x_i) -
+                                            \alpha(x_{i-1}))
+\end{align*}
+\end{document}
+
+
+%%% Local Variables:
+%%% mode: latex
+%%% TeX-master: t
+%%% End:

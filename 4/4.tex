@@ -1,0 +1,235 @@
+\documentclass{article}
+\usepackage{fontspec}
+\usepackage{xcolor}
+%\usepackage{sagetex}
+
+\usepackage{euler}
+\usepackage{amsmath}
+\usepackage{amssymb}
+\usepackage{unicode-math}
+
+
+\usepackage[makeroom]{cancel}
+\usepackage{ulem}
+
+\setlength\parindent{0em}
+\setlength\parskip{0.618em}
+\usepackage[a4paper,lmargin=1in,rmargin=1in,tmargin=1in,bmargin=1in]{geometry}
+
+\setmainfont[Mapping=tex-text]{Helvetica Neue LT Std 45 Light}
+
+\newcommand\N{\mathbb{N}}
+\newcommand\Z{\mathbb{Z}}
+\newcommand\R{\mathbb{R}}
+\newcommand\C{\mathbb{C}}
+\newcommand\A{\mathbb{A}}
+
+\usepackage{soul}
+\begin{document}
+
+\begin{center}
+  151B --- 4
+
+  Ricardo J. Acuna
+
+  (862079740)
+\end{center}\vspace{1.618em}
+
+\paragraph{1} Suppose f and g are complex differentiable function on
+$(0, 1), f(x) → 0, g(x) → 0, f^{\prime}(x)\rightarrow A,
+g^{\prime}(x)\rightarrow B$ as $x → 0$ where $A$ and $B$ are complex
+numbers and $B \neq 0$. Prove that,
+
+\[\lim_{x\rightarrow 0} \frac{f(x)}{g(x)} = \frac{A}{B}\]
+
+\uwave{pf.}
+
+
+Both $z = x+iy$  and $h(z) = u(x,y) + i v(x,y)$
+
+On the interval $(0,1) \subset \C$, $\Im{z} =0 \implies z = x$.
+
+So, $u(x,y) = u(x,0) = u(x)$ and $v(x,y) = v(x,0) = v(x)$.
+
+Write, $h(z)$ as, $$h(x) = u(x) +i v(x)$$
+
+Now, in the complex plane the Cauchy Riemann equations give that if
+the derivative exists,
+\[h^{\prime}(x) = u_x(x)+iv_x(x)\]
+
+The partial of any $w(x,y)$ with respect to $x$, give the regular
+derivative if $w$ doesn't depend on $y.$
+
+So, we can write $$f(x) = u_1(x)+iv_1(x)\text{, and } g(x)= u_2(x)+iv_2(x)$$ and $$f^{\prime}(x) = u_1^{\prime}(x)+ i
+u_1^{\prime}(x)\text{, and } g^{\prime}(x) =
+u_2^{\prime}(x)+ i v_2^\prime(x)$$
+
+
+We have that $f^{\prime}(x)\rightarrow A$ and
+$g^{\prime}(x)\rightarrow B$, as $x\rightarrow 0$.
+
+And, also $A,B\in \C$ and $\C$ being a vector space with basis $\{1,i\}$ allows us to
+write. $$A = a + b i\text{, and }B = c + d i$$
+
+So we have both,
+\[ u_1^{\prime}(x)+ i
+v_1^{\prime}(x)\rightarrow a+ b i\]
+\[ u_2^{\prime}(x)+ i
+v_2^{\prime}(x)\rightarrow c+ d i\]
+\[\text{ as } x\rightarrow 0\]
+
+Since, $\C$ is a vector space, we have that the component functions
+converge to the components of the limits. So we have,
+
+\[u_1^{\prime}(x)\rightarrow a\text{, and } u_2^{\prime}(x)\rightarrow
+  b\text{, and }u_2^{\prime}(x) \rightarrow c \text{, and } v_2(x)
+  \rightarrow d\]
+\[\text{ as } x\rightarrow 0\]
+
+$x^{\prime} = 1$, and $1\rightarrow 1$ as $x\rightarrow 0$. Therefore,
+\[u_1^{\prime}(x) = \frac{u_1^{\prime}(x)}{1}\rightarrow
+  \frac{a}{1} = a\text{, and } u_1^{\prime}(x) =  \frac{u_1^{\prime}(x)}{1}\rightarrow
+  \frac{b}{1} = b \text{, and } u_2(x) = \frac{u_2^{\prime}(x)}{1}
+  \rightarrow \frac{c}{1}= c \text{, and } v_2^{\prime}(x) = \frac{v_2^{\prime}(x)}{1}
+  \rightarrow \frac{d}{1} = d\]
+\newpage
+
+Also we have,
+\[ f(x) = u_1(x)+ i
+v_1(x)\rightarrow 0 +  0 i = 0 \]
+\[ g(x) = u_2(x)+ i
+v_2(x)\rightarrow 0 +  0 i = 0\]
+\[\text{ as } x\rightarrow 0\]
+
+So,
+\[u_1(x) \rightarrow 0\text{, and } v_1(x) \rightarrow 0\text{, and
+  }u_2(x) \rightarrow 0\text{, and }u_2(x) \rightarrow 0\]
+\[\text{ as } x\rightarrow 0\]
+
+Now, it may seem silly to note, but $x\rightarrow 0$, as $x\rightarrow
+0.$
+
+Therefore all of our component functions give us limits of real
+numbers, and all of them satisfy the hypotheses of L'Hospital's rule. Therefore,
+
+\[\frac{u_1(x)}{x} \rightarrow a\text{, and } \frac{v_1(x)}{x} \rightarrow b\text{, and
+  }\frac{u_2(x)}{x} \rightarrow c\text{, and }\frac{u_2(x)}{x} \rightarrow d\]
+\[\text{ as } x\rightarrow 0\]
+
+Notice, $$\frac{f(x)}{g(x)} = \left(\frac{f(x)}{x} -A\right) \frac{x}{g(x)} +
+A\frac{x}{g(x)}$$
+
+$$\frac{f(x)}{x} = \frac{u_1(x)}{x} +i\frac{v_1(x)}{x} \text{, and }
+\frac{g(x)}{x} = \frac{u_2(x)}{x} +i\frac{v_2(x)}{x}$$
+
+Since the component functions converge to $A$ and $B$, respectively as
+$x\rightarrow 0$, we have.
+
+$$\frac{f(x)}{x}\rightarrow a+bi = A,\quad\text{and }\quad
+\frac{g(x)}{x}\rightarrow c+di = B$$
+$$\text{as }x\rightarrow 0$$
+
+We are given $B\neq 0$, so $\frac{1}{B}$ exists in $\C$.
+
+\begin{align*}
+\lim_{x\rightarrow 0}\frac{f(x)}{g(x)} &= \lim_{x\rightarrow 0}\left(\frac{f(x)}{x} -A\right) \frac{x}{g(x)} +
+                                         A\frac{x}{g(x)}\\
+                                      &= (A-A)\frac{1}{B} + A\frac{1}{B}\\
+                                       &= \frac{A}{B}
+\end{align*}
+
+$\blacksquare$
+
+\newpage
+\paragraph{2} Suppose $\alpha$ is increasing on $[a,b]$ and continuous
+at $x_0\in[a,b]$. Let $f$ be the function $f(x_0) = 1$, and $f = 0$
+otherwise. Prove that $f\in\mathfrak{R}(\alpha)$ and $$\int_a^b f d\alpha
+= 0$$
+
+\uwave{pf.}
+
+Let $P$ be any partition of $[a,b]$.
+
+Then, be cause $f$ can only take the values $0$or $1$. It follows that
+$M_j
+= 1$ for precisely one index $j$ such that  $x_0 \in (x_{j-1},x_j)$, and $M_i =
+0$, for all $i\neq j$. Furthermore, $m_i = 0$ for all $i$.
+
+$$U(P,f,\alpha) =\sum_{x_i}M_i\Delta\alpha_i = 1\Delta\alpha_j =\Delta\alpha_j  \text{, and } L(P,f,\alpha) = 0$$
+
+Now, $\alpha$ is continuous at $x_0$ so,
+
+$$\forall \varepsilon > 0: \exists \delta >0: |x_{i}-x_{i-1}|<\delta
+\implies |\Delta\alpha_i| = |\alpha(x_i) -\alpha(x_{i-1})| < \varepsilon $$
+
+Since $\alpha$ is increasing, $$x_{i-1} < x_i \implies \alpha(x_{i-1})
+<\alpha(x_i) \implies \Delta\alpha_i >0 \implies \Delta\alpha_i < \varepsilon$$
+$$\implies U(P,f,\alpha) - L(P,f,\alpha)  = \Delta\alpha_j < \varepsilon$$
+
+Since the partition was arbitrary, therefore this works for all partitions,
+therefore it works for at least one. It follows that there exist one
+partition that works for all epsilon,
+
+\[\text{so by }(6.6)\quad f\in \mathfrak{R}(\alpha).\]
+
+
+
+\[f\in \mathfrak{R}(\alpha) \implies \int_a^b f d\alpha = \int_{\enskip
+    a}^{\bar{}\enskip b} f d\alpha = \int_{\underbar{}\enskip a}^{b} f
+  d\alpha = \sup L(P, f,\alpha)\]
+
+Now, the conclusion follows noticing $\forall P: L(P, f,\alpha) =
+0$. The sup of $\{0\}$ is $0$.  Therefore,
+
+$$\int_a^b f d\alpha
+= 0$$
+
+$\blacksquare$
+
+\newpage
+
+\paragraph{3} Suppose $f \geq 0$ is continuous on $[a,b]$ and $\int_a^b f(x) dx
+= 0$. Prove that $f(x) = 0$ for all $x \in [a,b].$
+
+\uwave{pf.}
+
+Suppose for a contradiction that $f$ is not constantly $0$.
+
+$$\exists c \in [a,b]: f(c) \neq 0 \implies \frac{f(c)}{2}
+> 0$$.
+
+\[ L(P,f) \leq \int_{\underbar{} b}^af(x)dx = \int f(x) dx = 0\]
+
+Now, $\frac{f(c)}{2} = \epsilon >0,$ by continuity,
+
+$\exists \delta > 0: |c-x| < \delta \implies |f(c) - f(x)| <
+\frac{f(c)}{2} \implies f(c) - f(x) < \frac{f(c)}{2} \implies
+\frac{f(c)}{2} = f(c) - \frac{f(c)}{2} < f(x)$.
+
+So, there is an interval where $L(P,f) > 0$.
+
+So,  $0< L(P,f) < \int f(x) dx  = 0$ gives us a contradiction. Therefore $f = 0$$\quad \blacksquare$
+
+\paragraph{4} Suppose $f(x) = 0$ for all irrational $x$ and $f(x) = 1$
+for all rational $x$, prove that $f$ is not Riemann integrable on any
+$[a,b]$ for any $a<b$.
+
+\uwave{pf.}
+
+Let $P$, be any partition of $[a,b]$
+
+Then $M_i = 1$, and $m_i = 0$ for all $x_i$.
+
+$a < b \implies 0 < b-a$. So,
+
+\[\int_{\underbar{}\enskip a}^b f(x)dx =0<  (b-a) =
+  \int_a^{\bar{}\enskip b} f(x) dx \]
+
+So, $f \not\in \mathfrank{R} \quad \blacksquare$
+
+\end{document}
+
+%%% Local Variables:
+%%% mode: latex
+%%% TeX-master: t
+%%% End:

@@ -1,0 +1,196 @@
+\documentclass{article}
+\usepackage{fontspec}
+\usepackage{xcolor}
+%\usepackage{sagetex}
+
+\usepackage{euler}
+\usepackage{amsmath}
+\usepackage{amssymb}
+\usepackage{unicode-math}
+
+
+\usepackage[makeroom]{cancel}
+\usepackage{ulem}
+
+\setlength\parindent{0em}
+\setlength\parskip{0.618em}
+\usepackage[a4paper,lmargin=1in,rmargin=1in,tmargin=1in,bmargin=1in]{geometry}
+
+\setmainfont[Mapping=tex-text]{Helvetica Neue LT Std 45 Light}
+
+\newcommand\N{\mathbb{N}}
+\newcommand\Z{\mathbb{Z}}
+\newcommand\R{\mathbb{R}}
+\newcommand\C{\mathbb{C}}
+\newcommand\A{\mathbb{A}}
+
+\usepackage{soul}
+\begin{document}
+
+\begin{center}
+  151B --- 3
+
+  Ricardo J. Acuna
+
+  (862079740)
+\end{center}\vspace{1.618em}
+
+\paragraph{1} Let $f$ be a continuous real function on $\R$. If
+$f^\prime(x)$ exists for all $x\neq 0$ and $f^\prime (x) \rightarrow
+3$ as $x\rightarrow 0$, does it follow that $f^\prime(0)$ exists?
+
+\uwave{pf.}
+
+$f^\prime(0) = \lim_{h\rightarrow 0} \frac{f(h)-f(0)}{h}$
+
+$(f(h)-f(0))^\prime = f^\prime(h)\rightarrow 3$ as $h\rightarrow 0$
+
+$h^\prime = 1 \rightarrow 1$ as $h\rightarrow 0$
+
+$\frac{(f(h)-f(0))^\prime}{h^\prime} \rightarrow \frac{3}{1} = 3$, as
+$h\rightarrow 0$
+
+$f(h)-f(0) \rightarrow 0$, as $h\rightarrow 0$
+
+Then by L'Hospital's rule,
+
+$\frac{f(h)-f(0)}{h} \rightarrow 3$, as $h\rightarrow 0$.
+
+So, $f^\prime(0) = 3$
+$\quad \blacksquare$
+
+\paragraph{2}  Let $f$ be a twice-differentiable real function on $R$ and $M_0$, $M_1$ and $M_2$ be the least upper
+bounds of $|f(x)|$, $|f^\prime(x)|$ and $|f^{\prime\prime}(x)|$. Prove that
+
+\[M_1^2 \leq 4 M_0M_2\].
+
+Hint: Use the Taylor’s theorem with $n = 2$.
+
+\uwave{pf.}
+$\forall \alpha,\beta \in [a,b]: \exists x\in (\alpha,\beta)$ by
+Taylor's theorem,
+\[f(\beta) = f(\alpha) +f^\prime(\alpha)(\beta -\alpha)
+  +\frac{f^{\prime\prime}(x)}{2}(\beta-\alpha)^2\]
+
+\[\implies f^\prime(\alpha) = \frac{f(\beta) - f(\alpha)}{\beta -\alpha} -
+  \frac{f^{\prime\prime}(x)}{2}(\beta-\alpha)\]
+
+\[\implies |f^\prime(\alpha)| = \left|\frac{f(\beta) - f(\alpha)}{\beta -\alpha} -
+  \frac{f^{\prime\prime}(x)}{2}(\beta-\alpha)\right| \leq \left|\frac{f(\beta) -
+    f(\alpha)}{\beta -\alpha}\right| + \left|\frac{f^{\prime\prime}(x)}{2}(\beta-\alpha)\right| \]
+
+\[\implies |f^\prime(\alpha)| \leq \frac{|f(\beta)|+|f(\alpha)|}{|\beta -\alpha|} + \left|\frac{f^{\prime\prime}(x)}{2}\right||\beta-\alpha| \implies M_1 \leq \frac{2M_0}{|\beta -\alpha|} +
+  \frac{M_2}{2}|\beta-\alpha| \]
+
+\[\implies M_1 \leq \frac{1}{2} (\frac{4M_0}{|\beta-\alpha|}+M_2|\beta-\alpha|)\]
+
+
+By the inequality of arithmetic geometric means,
+
+$\frac{1}{2} (\frac{4M_0}{|\beta-\alpha|}+M_2|\beta-\alpha|) >
+\sqrt{\frac{4M_0}{|\beta-\alpha|}\cdot M_2|\beta-\alpha|} = 2\sqrt{M_0M_2}$
+
+Since $\frac{4M_0}{|\beta-\alpha|}+M_2|\beta-\alpha|$ bounds $M_1$  for arbitrary $|\beta-\alpha|$,
+it must be at least $2\sqrt{M_0M_2}$ by the inequality above. And
+$M_1$ is the least upper bound the equation $M_1\leq 2\sqrt{M_0M_2}$
+still holds.
+
+\[\implies M_1^2 \leq 4M_0M_2\quad \blacksquare\]
+
+\newpage
+\paragraph{3} Suppose $f$ is defined in a neighborhood of $x$ and
+suppose $f^{\prime\prime}(x)$ exists. Show that
+
+\[\lim_{h\rightarrow 0} \frac{f(x+h) +f(x-h) -2f(x)}{h^2} = f^{\prime\prime}(x)\]
+
+\uwave{pf.}
+
+$f^{\prime\prime}(y)$ exists. So,
+\[f^{\prime\prime}(y) = \lim_{h\rightarrow 0} \frac{f^\prime(y+h) -f^\prime(y)}{h}=\]
+
+\[ \lim_{h\rightarrow 0} \frac{\frac{f(y+h+h)-f(y+h)}{h} -
+    \frac{f(y+h) -f(y)}{h}}{h}=\]
+
+$f$ is defined and differentiable on a neighborhood, so let $y = x-h
+\in (x-\delta,x+\delta).$
+
+\[f^{\prime\prime}(x) = \lim_{h\rightarrow 0} \frac{\frac{f(x - h +h+h)-f(x -h +h)}{h} -
+    \frac{f(x-h+h) -f(x-h)}{h}}{h}=\]
+
+\[ \lim_{h\rightarrow 0} \frac{\frac{f(x +h)-f(x)}{h} -
+    \frac{f(x) -f(x-h)}{h}}{h}=\]
+
+\[ \lim_{h\rightarrow 0} \frac{f(x + h) -f(x) -(f(x) -f(x-h))}{h^2}=\]
+
+\[ \lim_{h\rightarrow 0} \frac{f(x + h) +f(x-h) -2f(x)}{h^2}\]
+
+$\blacksquare$
+
+\newpage
+\paragraph{4} Recall that a continuous function $f$ on $(a, b)$ is
+convex if and only if for all $x, y\in (a,b)$
+
+\[f\left(\frac{x+y}{2}\right) \leq \frac{1}{2}(f(x)+f(y))\]
+
+Let $f$ be a differentiable real function on $(a, b)$. Prove that $f$
+is convex if and only if $f^\prime$
+is monotonically increasing.
+
+\uwave{pf.}
+
+($\implies$) Ass. $f$ is convex,
+
+\[f\left(\frac{x+y}{2}\right) \leq \frac{1}{2}(f(x)+f(y))\].
+
+$\implies  f(x) = f\left(\frac{(x+h) + (x-h)}{2}\right)
+\leq \frac{1}{2}(f(x+h)+f(x-h))$.
+
+$\implies  2f(x) \leq f(x+h)+f(x-h)$.
+
+$\implies  0 = 2f(x) - 2f(x) \leq f(x+h)+f(x-h) -2f(x)$.
+
+$\implies  0 = \lim_{h\rightarrow 0} \frac{2f(x) - 2f(x)}{h^2} \leq
+\lim_{h\rightarrow 0} \frac{ f(x+h)+f(x-h) -2f(x)}{h^2} =
+f^{\prime\prime}(x)$, by $\mathbf{3}.$
+
+So, if $f$ is convex and $f^{\prime\prime}$ exists for all
+$x\in(a,b)$, then $f^\prime$ is increasing.
+
+($\impliedby$) Ass. $f^{\prime}$ is increasing.
+Let $x,y \in (a,b)$.
+\begin{align*}
+  x < y & \implies f^{\prime}(x)\leq f^{\prime}(y)\\
+        & \implies   \lim_{h\rightarrow 0} \frac{f(x+h)-f(x)}{h}
+          \leq\lim_{h\rightarrow 0} \frac{f(y+h)-f(y)}{h}\\
+\end{align*}
+\begin{align*}
+  x -h < x & \implies   \lim_{h\rightarrow 0} \frac{f(x-h+h)-f(x-h)}{h}
+             \leq\lim_{h\rightarrow 0} \frac{f(x+h)-f(x)}{h}\\
+& \implies   \lim_{h\rightarrow 0} \frac{2f(x)}{h}
+                                                                 \leq\lim_{h\rightarrow 0} \frac{f(x-h)+f(x+h)}{h}\\
+  & \implies   \lim_{h\rightarrow 0} \frac{f(x)}{h}
+    \leq\lim_{h\rightarrow 0} \frac{f(x-h)+f(x+h)}{2h}\\
+  & \implies    \frac{f(x)}{\lim_{h\rightarrow 0} h}
+    \leq \frac{f(x-h)+f(x+h)}{\lim_{h\rightarrow 0}2h}\\
+  & \implies    f(x)
+    \leq \frac{f(x-h)+f(x+h)}{\lim_{h\rightarrow
+    0}2h}\lim_{h\rightarrow 0} h\\
+           & \implies    f(x) \leq \frac{f(x-h)+f(x+h)}{2}\\
+           & \implies    f\left(\frac{x+h +x-h}{2}\right) \leq \frac{f(x-h)+f(x+h)}{2}
+\end{align*}
+
+Put $x = x-h$ and $y = x+h$,
+
+\[\implies    f\left(\frac{x + y}{2}\right) \leq \frac{f(x)+f(y)}{2}\]
+
+Now, letting $x \in (a,b)$, $0<h<\min\{|a-x|,|b-x|\}$, covers all of $(a,b)\quad$
+$\blacksquare$
+
+I still don't know what to do when $f^{\prime\prime}$ doesn't exist.
+
+\end{document}
+
+%%% Local Variables:
+%%% mode: latex
+%%% TeX-master: t
+%%% End:

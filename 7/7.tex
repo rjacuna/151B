@@ -1,0 +1,179 @@
+\documentclass{article}
+\usepackage{fontspec}
+\usepackage{xcolor}
+%\usepackage{sagetex}
+
+\usepackage{euler}
+\usepackage{amsmath}
+\usepackage{amssymb}
+\usepackage{unicode-math}
+
+
+\usepackage[makeroom]{cancel}
+\usepackage{ulem}
+
+\setlength\parindent{0em}
+\setlength\parskip{0.618em}
+\usepackage[a4paper,lmargin=1in,rmargin=1in,tmargin=1in,bmargin=1in]{geometry}
+
+\setmainfont[Mapping=tex-text]{Helvetica Neue LT Std 45 Light}
+
+\newcommand\N{\mathbb{N}}
+\newcommand\Z{\mathbb{Z}}
+\newcommand\Q{\mathbb{Q}}
+\newcommand\R{\mathbb{R}}
+\newcommand\C{\mathbb{C}}
+\newcommand\A{\mathbb{A}}
+
+\usepackage{soul}
+\begin{document}
+
+\begin{center}
+  151B --- 7
+
+  RJ Acuna
+
+  (862079740)
+\end{center}\vspace{1.618em}
+
+\paragraph{1} If the sequences $\{f_n\}$ and $\{g_n\}$ converge
+uniformly on $E$, prove that $\{f_n+g_n\}$ converges uniformly on $E$.
+
+\uwave{pf. }
+
+Let $\{f_n\}$ and $\{g_n\}$ converge uniformly on $E\subseteq \R$.
+
+So $\{f_n\}$ and $\{g_n\}$ are Cauchy sequences of functions
+$\forall \varepsilon > 0:$
+
+$f_n \rightarrow f \implies \exists M \in \N, \forall m_1 \geq M,
+m_2\geq M, |f_{m_1} - f_{m_2}|<\frac{\varepsilon}{2}$
+
+$g_n \rightarrow g \implies \exists K \in \N, \forall k_{1} \geq K,k_2
+\geq K,$ $|g_{k_1}-g_{k_2}|<\frac{\varepsilon}{2}$
+
+Let $N = \max \{M,K\}$, $\forall n\geq N,l\geq N$ we have both,
+
+$|f_n - f_l|< \frac{\varepsilon}{2}$ and $|g_n - g_l|<\frac{\varepsilon}{2}$
+
+$|f_n + g_n - f_l - g_l|\leq |f_n - f_l| + |g_n - g_l| \leq \varepsilon$
+
+So, $\{f_n + g_n\}$ converges uniformly on $E$ $\quad \blacksquare$
+
+\paragraph{2} If the sequences ${f_n}$ and ${g_n}$ defined on $E$ such that
+
+$\quad$(1) $\sum f_n$ converges uniformly on $E$
+
+$\quad$(2) $g_n$ converges to $0$ uniformly on $E$.
+
+$\quad$(3) $g_1(x) ≥ g_2(x) ≥ g_3(x) ≥ \cdots$ for every $x ∈  E$
+
+Prove that $\sum f_ng_n$ converge uniformly on E.
+
+\uwave{pf.}
+
+Let $S_n = \sum_{n=1}^{N} f_n$
+
+$\sum f_n$ converges uniformly on $E\implies \{S_n\}$ is bounded.
+
+So, $\exists M\in \R: |S_n|\leq M$ for all $n$.
+
+$g_n\rightarrow 0$ uniformly  on $E$.
+
+Let $\varepsilon > 0,$ there is an $N$ such that $g_N(x) \leq \frac{\varepsilon}{2M}$
+
+From the third condition $g_n -g_{n+1}\geq 0$.
+
+For $N \leq p \leq q$, we have
+\begin{align*}
+  \left| \sum_{n=1}^q f_n g_n - \sum_{n=1}^{p-1} f_ng_n \right|
+  &= \left|\sum_{n=p}^q f_n g_n \right|\\
+                  &= \left|\sum_{n=p}^{q-1}S_n(g_n - g_{n+1}) + S_qg_q -
+                       S_{q-1}g_p\right| \\
+  &\leq M \left|\sum_{n=p}^{q-1}(g_n - g_{n+1}) + g_q +
+    g_p\right|\\
+  &= 2Mg_p \leq 2Mg_{N}\leq \varepsilon
+\end{align*}
+
+So, $\{\sum_{n=1}^kf_ng_n\}$ converges uniformly by the Cauchy criterion.
+Thus, $\sum_{n=1}^\infty f_ng_n \quad \blacksquare$
+
+\paragraph{3} If $\sum |c_n| \leq \infty$ and $x_n$ is a sequence of
+distinct points in $(a,b),$ show that
+$$f(x) = \sum_{k=1}^\infty c_kI(x-x_k)$$
+
+converges uniformly and that $f$ is continuous for every $x \neq x_n$.
+
+\uwave{pf. }
+
+Let $f(x) = \sum_{k=1}^\infty c_kI(x-x_k)$
+
+$|c_nI(x-x_n)| \leq |c_n|$, and $\sum |c_n| \leq \infty$
+
+By, theorem $7.10$, it follows that $f$ converges.
+
+Let $S_n = \sum_{k=1}^n c_n I(x-x_n),$ and $\{S_n\}$ be the sequence
+of partial sums of $f$.
+
+Each $S_n$ is a linear combination of functions with discontinuities at
+$\{x_k\}_{k=1}^n$, so $S_n$ is discontinuous precisely there.
+
+So, all of the discontinuities of $\{S_n\}$ is the sequence $\{x_n\}$
+of distinct points.
+
+let $E = (a,b)\backslash \{x_n\}$, now since the discontinuities of
+$\{S_n\}$ are not on $E$, $\forall n\in \N, S_n$ is continuous on $E$.
+
+So, $\{S_n\}$ is a sequence of continous functions on $E$, that
+converges uniformly to $f$ in $E$.
+
+So, by theorem $7.12$ $f$ is
+continuous on $E$.
+
+Which is precisely the set of points $x \in (a,b),$
+where $x \neq x_n$ for all $n\in \N \quad \blacksquare$
+
+\paragraph{4} Suppose ${f_n}$ is an equicontinuous sequence of
+functions on $[a, b]$ and $\{f_n\}$ converge pointwise on $[a,
+b]$. Prove that it converges uniformly.
+
+\uwave{pf. }
+
+
+$\{f_n\}$ converges pointwise $\implies \forall x\in [a,b],
+\{f_n(x)\}$ converges.
+
+So by the Cauchy criterion for sequences of real numbers,
+
+$\exists N\in \N: n\geq N, m\geq N \implies |f_n(x)-f_m(x)|\leq \frac{\varepsilon}{3}$
+
+$\{f_n\}$ is equicontinuous $\implies \forall \varepsilon > 0, \exists
+\delta >0: |x-y|<\delta \implies
+|f_n(x)-f_n(y)|<\frac{\varepsilon}{3}$
+\begin{align*}
+  |f_n(x)-f_m(x)| &= |f_n(x)-f_m(x) +f_n(y)-f_n(y) +f_m(y)-f_m(y)| \\
+                  &= |f_n(x)-f_n(y) +f_n(y)-f_m(y) -f_m(x) +f_m(y)| \\
+                  &\leq |f_n(x)-f_n(y)|+|f_n(y)-f_m(y)|+|f_m(x)
+                    -f_m(y)|\\
+                  &\leq |f_n(x)-f_n(y)|+|f_n(y)-f_m(y)|+|f_m(x)
+                    -f_m(y)|\\
+                  &\leq \frac{2\varepsilon}{3} + |f_n(y)-f_m(y)|
+                    \quad \text{ by equicontinuity of $\{f_n\}$}\\
+                  &\leq \varepsilon
+                    \hspace{3.4cm} \text{ by pointwise convergence of $\{f_n\}$}
+\end{align*}
+
+Since, $[a,b]$ so there exists a finite subcover by open balls of
+radius $\delta/2$. Then $x$ lies in one of the
+balls of radius $\delta/2$, so the previous inequality shows the Cauchy condition for uniform
+convergence of functions holds for all $x\in [a,b]$.
+
+Therefore, $\{f_n\}$ converges uniformly$\quad \blacksquare$
+
+\end{document}
+
+
+%%% Local Variables:
+%%% mode: latex
+%%% TeX-master: t
+%%% End:
